@@ -7,6 +7,8 @@
 int main(void)
 {
 	TIM6_Init();
+	Clock_init();
+
 	RCC->IOPENR |= RCC_IOPENR_GPIOAEN;
 	RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
 	GPIO_InitTypeDef initSrtuct;
