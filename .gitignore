@@ -1,0 +1,6 @@
+/output/
+*.cogui
+*.comarker
+*.comemgui
+*.coproj
+/LCD_MELT/
