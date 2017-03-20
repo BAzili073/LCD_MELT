@@ -1,0 +1,6 @@
+#define LED_RED_PORT GPIOA
+#define LED_RED_PIN GPIO_PIN_5
+#define LED_GREEN_PORT GPIOB
+#define LED_GREEN_PIN GPIO_PIN_4
+
+
