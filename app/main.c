@@ -1,13 +1,14 @@
 #include "stm32l053xx.h"
 #include "stm32l0xx_hal.h"
-#include "defines.c"
+#include "defines.h"
 #include "TIMs.h"
+#include "Clock.h"
+#include "LCD_func.h"
 
+int main(void){
 
-int main(void)
-{
-	TIM6_Init();
 	Clock_init();
+	TIM6_Init();
 
 	RCC->IOPENR |= RCC_IOPENR_GPIOAEN;
 	RCC->IOPENR |= RCC_IOPENR_GPIOBEN;
@@ -19,14 +20,18 @@ int main(void)
 			initSrtuct.Speed = GPIO_SPEED_HIGH;
 			HAL_GPIO_Init(LED_RED_PORT, &initSrtuct);
 
-			initSrtuct.Mode = GPIO_MODE_OUTPUT_PP;
-			initSrtuct.Pin = LED_GREEN_PIN;
-			initSrtuct.Pull = GPIO_NOPULL;
-			initSrtuct.Speed = GPIO_SPEED_HIGH;
-			HAL_GPIO_Init(LED_GREEN_PORT, &initSrtuct);
+			while_time(100);
+			MTLCD_Init();
+			while_time(1000);
+			MTLCD_OnOff(1);
     while(1)
     {
-//    	LED_RED_PORT->ODR |= LED_RED_PIN;
-//    	LED_GREEN_PORT-> ODR |= LED_GREEN_PIN;
+    	int i;
+    	for (i = 0;i<10;i++){
+    		set_timeout(100);
+    		while_timeout();
+    	}
+    	LED_RED_PORT->ODR ^= LED_RED_PIN;
+    	MTLCD_CLR();
     }
 }

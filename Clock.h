@@ -3,7 +3,7 @@
 #include "stm32l053xx.h"
 #include "stm32l0xx_hal.h"
 
-void Clocl_init();
+void Clock_init();
 
 
 
